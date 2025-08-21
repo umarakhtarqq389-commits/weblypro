@@ -247,7 +247,10 @@
 //   );
 // }; 
 
-// export default VideoCarousel;
+// // export default VideoCarousel;
+
+
+
 import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 import { FaChevronLeft, FaChevronRight, FaPlay, FaPause } from "react-icons/fa";
@@ -256,10 +259,12 @@ import "slick-carousel/slick/slick-theme.css";
 import "./VideoCarousel.scss";
 
 const videos = [
-  { id: 1, type: "mp4", src: "https://res.cloudinary.com/du3tkzdhe/video/upload/v1755752817/AQNWcxlDYSSZgKWuWam3FoWnQBwhJTIV7V4b3jtg07qF8xX9ZqQtDZo7hh2DYcsyLKFhqC4n9GaPxEYtsVXVH13L_tcllfj.mp4" },
-  { id: 2, type: "mp4", src: "https://res.cloudinary.com/du3tkzdhe/video/upload/v1755752816/AQMIDBn-lHsqFmm6ViLzpZcxj3_eC0xnkr8Ch43lL0iOcmKEoal9VwRAVpn4FuX7pRC3eAzbVCXewHkQp_z2quB5_jixjli.mp4", poster: "https://img.freepik.com/premium-psd/instagram-reels-cover-youtube-short-video-thumbnail-design_475351-778.jpg" },
-  { id: 3, type: "mp4", src: "https://res.cloudinary.com/du3tkzdhe/video/upload/v1755752817/AQNWcxlDYSSZgKWuWam3FoWnQBwhJTIV7V4b3jtg07qF8xX9ZqQtDZo7hh2DYcsyLKFhqC4n9GaPxEYtsVXVH13L_tcllfj.mp4", poster: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=600&h=800&fit=crop" },
-  { id: 4, type: "mp4", src: "https://res.cloudinary.com/du3tkzdhe/video/upload/v1755752816/AQMIDBn-lHsqFmm6ViLzpZcxj3_eC0xnkr8Ch43lL0iOcmKEoal9VwRAVpn4FuX7pRC3eAzbVCXewHkQp_z2quB5_jixjli.mp4", poster: "https://img.freepik.com/premium-psd/business-instagram-reels-cover-youtube-thumbnail-design_475351-769.jpg" },
+  { id: 1, type: "mp4", src: "https://res.cloudinary.com/du3tkzdhe/video/upload/v1755752817/AQNWcxlDYSSZgKWuWam3FoWnQBwhJTIV7V4b3jtg07qF8xX9ZqQtDZo7hh2DYcsyLKFhqC4n9GaPxEYtsVXVH13L_tcllfj.mp4", title: "REELS THUMBNAIL" },
+  { id: 2, type: "mp4", src: "https://res.cloudinary.com/du3tkzdhe/video/upload/v1755752816/AQMIDBn-lHsqFmm6ViLzpZcxj3_eC0xnkr8Ch43lL0iOcmKEoal9VwRAVpn4FuX7pRC3eAzbVCXewHkQp_z2quB5_jixjli.mp4", poster: "https://img.freepik.com/premium-psd/instagram-reels-cover-youtube-short-video-thumbnail-design_475351-778.jpg", title: "DISTILLED" },
+  { id: 3, type: "mp4", src: "https://res.cloudinary.com/du3tkzdhe/video/upload/v1755752817/AQNWcxlDYSSZgKWuWam3FoWnQBwhJTIV7V4b3jtg07qF8xX9ZqQtDZo7hh2DYcsyLKFhqC4n9GaPxEYtsVXVH13L_tcllfj.mp4", poster: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=600&h=800&fit=crop", title: "SPONSIBLE" },
+  { id: 4, type: "mp4", src: "https://res.cloudinary.com/du3tkzdhe/video/upload/v1755752816/AQMIDBn-lHsqFmm6ViLzpZcxj3_eC0xnkr8Ch43lL0iOcmKEoal9VwRAVpn4FuX7pRC3eAzbVCXewHkQp_z2quB5_jixjli.mp4", poster: "https://img.freepik.com/premium-psd/business-instagram-reels-cover-youtube-thumbnail-design_475351-769.jpg", title: "MUSLESS" },
+  { id: 5, type: "mp4", src: "https://res.cloudinary.com/du3tkzdhe/video/upload/v1755752817/AQNWcxlDYSSZgKWuWam3FoWnQBwhJTIV7V4b3jtg07qF8xX9ZqQtDZo7hh2DYcsyLKFhqC4n9GaPxEYtsVXVH13L_tcllfj.mp4", title: "REELS THUMBNAIL" },
+  { id: 6, type: "mp4", src: "https://res.cloudinary.com/du3tkzdhe/video/upload/v1755752816/AQMIDBn-lHsqFmm6ViLzpZcxj3_eC0xnkr8Ch43lL0iOcmKEoal9VwRAVpn4FuX7pRC3eAzbVCXewHkQp_z2quB5_jixjli.mp4", poster: "https://img.freepik.com/premium-psd/instagram-reels-cover-youtube-short-video-thumbnail-design_475351-778.jpg", title: "DISTILLED" },
 ];
 
 const VideoCarousel = () => {
@@ -277,9 +282,10 @@ const VideoCarousel = () => {
     slidesToScroll: 1,
     responsive: [
       { breakpoint: 1366, settings: { slidesToShow: 4 } },
-      { breakpoint: 1200, settings: { slidesToShow: 3 } }, // 👈 added for 3 reels
+      { breakpoint: 1200, settings: { slidesToShow: 3 } },
       { breakpoint: 992, settings: { slidesToShow: 2 } },
-      { breakpoint: 600, settings: { slidesToShow: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } }, // Show 2 videos on tablet
+      { breakpoint: 576, settings: { slidesToShow: 1 } }, // Show 1 video on mobile
     ],
   };
 
@@ -289,12 +295,20 @@ const VideoCarousel = () => {
 
     // Pause other videos
     videoRefs.current.forEach((el, i) => {
-      if (el && i !== index) el.pause();
+      if (el && i !== index) {
+        el.pause();
+        el.currentTime = 0; // Reset other videos to start
+      }
     });
 
     if (v.paused) {
-      v.play();
-      setPlayingId(item.id);
+      v.play()
+        .then(() => {
+          setPlayingId(item.id);
+        })
+        .catch(error => {
+          console.error("Error playing video:", error);
+        });
     } else {
       v.pause();
       setPlayingId(null);
@@ -331,37 +345,25 @@ const VideoCarousel = () => {
                   className="video-el"
                   preload="metadata"
                   playsInline
-                  muted
+                  
                   onPause={() => setPlayingId(null)}
                   onEnded={() => setPlayingId(null)}
                 />
 
-                {/* Center overlay button */}
-                {(isHovered || !isPlaying) && (
-                  <button
-                    className="play-overlay"
-                    onClick={() => togglePlay(index, item)}
-                  >
-                    {isPlaying ? <FaPause className="play-icon" /> : <FaPlay className="play-icon" />}
-                  </button>
-                )}
+                {/* Title overlay */}
+                <div className="video-title">{item.title}</div>
 
-                {/* Bottom controls */}
-                <div className="video-controls">
-                  <button onClick={() => togglePlay(index, item)}>
-                    {isPlaying ? <FaPause /> : <FaPlay />}
-                  </button>
-                  <input
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.05"
-                    defaultValue="1"
-                    onChange={(e) => {
-                      const v = videoRefs.current[index];
-                      if (v) v.volume = e.target.value;
-                    }}
-                  />
+                {/* Center overlay button */}
+                <button
+                  className={`play-overlay ${isPlaying ? 'playing' : ''}`}
+                  onClick={() => togglePlay(index, item)}
+                >
+                  {isPlaying ? <FaPause className="play-icon" /> : <FaPlay className="play-icon" />}
+                </button>
+
+                {/* Progress bar */}
+                <div className="video-progress">
+                  <div className="progress-bar"></div>
                 </div>
               </div>
             </div>
