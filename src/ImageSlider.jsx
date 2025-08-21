@@ -213,8 +213,9 @@ const StudyDestinations = () => {
     setTimeout(() => {
       setIsTransitioning(false);
     }, 700);
-  }, [totalSlides, isTransitioning]);
-
+  }, [isTransitioning, totalSlides]); // ✅ add totalSlides
+ 
+  
   const handlePrev = useCallback(() => {
     if (isTransitioning) return;
     
@@ -224,7 +225,9 @@ const StudyDestinations = () => {
     setTimeout(() => {
       setIsTransitioning(false);
     }, 700);
-  }, [isTransitioning,currentSlide]);
+  }, [isTransitioning, totalSlides]); // ✅ add totalSlides
+ 
+  
 
   const goToSlide = useCallback((index) => {
     if (isTransitioning || index === currentSlide) return;
@@ -235,7 +238,8 @@ const StudyDestinations = () => {
     setTimeout(() => {
       setIsTransitioning(false);
     }, 700);
-  }, [isTransitioning, currentSlide]);
+ }, [isTransitioning, currentSlide]); // ✅ correct
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isTransitioning) {
