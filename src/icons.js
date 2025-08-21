@@ -74,7 +74,7 @@ import React, { useState } from 'react';
 import './SocialSidebar.scss';
 import { 
   FaFacebook, 
-  FaTwitter, 
+ 
   FaInstagram, 
   FaLinkedin, 
   FaYoutube, 

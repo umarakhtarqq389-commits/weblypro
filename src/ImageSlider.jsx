@@ -194,15 +194,15 @@ const StudyDestinations = () => {
   const totalSlides = Math.ceil(countries.length / 3);
 
   // Auto-scroll functionality with smooth continuous loop
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isTransitioning) {
-        handleNext();
-      }
-    }, 5000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (!isTransitioning) {
+  //       handleNext();
+  //     }
+  //   }, 5000);
     
-    return () => clearInterval(interval);
-  }, [isTransitioning]);
+  //   return () => clearInterval(interval);
+  // }, [isTransitioning, handleNext]); 
 
   const handleNext = useCallback(() => {
     if (isTransitioning) return;
@@ -224,7 +224,7 @@ const StudyDestinations = () => {
     setTimeout(() => {
       setIsTransitioning(false);
     }, 700);
-  }, [totalSlides, isTransitioning]);
+  }, [isTransitioning,currentSlide]);
 
   const goToSlide = useCallback((index) => {
     if (isTransitioning || index === currentSlide) return;
@@ -236,6 +236,15 @@ const StudyDestinations = () => {
       setIsTransitioning(false);
     }, 700);
   }, [isTransitioning, currentSlide]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isTransitioning) {
+        handleNext();   // ✅ now safe
+      }
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, [isTransitioning, handleNext]); 
 
   // Get the 3 countries for the current slide
   const getCurrentCountries = () => {
