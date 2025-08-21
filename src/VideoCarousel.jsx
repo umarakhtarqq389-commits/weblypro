@@ -277,8 +277,9 @@ const VideoCarousel = () => {
     slidesToScroll: 1,
     responsive: [
       { breakpoint: 1366, settings: { slidesToShow: 4 } },
-      { breakpoint: 992, settings: { slidesToShow: 3 } },
-      { breakpoint: 600, settings: { slidesToShow: 2 } },
+      { breakpoint: 1200, settings: { slidesToShow: 3 } }, // 👈 added for 3 reels
+      { breakpoint: 992, settings: { slidesToShow: 2 } },
+      { breakpoint: 600, settings: { slidesToShow: 1 } },
     ],
   };
 
