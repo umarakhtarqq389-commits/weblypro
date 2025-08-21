@@ -152,4 +152,8 @@ $primary: #ffd700; // yellow
 }
 @media (max-width: 600px) {
   .video-carousel .video-frame { max-width: 100%; }
+   
+  .slick-slide > div {
+    padding: 0 6px;   // optional spacing
+  }
 }
