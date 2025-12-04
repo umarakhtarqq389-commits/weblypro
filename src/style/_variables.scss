@@ -1,0 +1,48 @@
+// style/_variables.scss - UPDATED
+$primary-color: #4b33ea; // Vibrant purple - exact logo color
+$secondary-color: #d946ef; // Bright magenta/pink - exact logo gradient
+$accent-color: #a855f7; // Mid-purple for accents
+$accent-color-2: #f472b6; // Pink for highlights
+$accent-color-3: #c026d3; // Deep magenta
+
+$dark-bg: #0f0f1a; // Dark navy-purple base
+$dark-bg-2: #181826; // Slightly lighter for sections
+$card-bg: rgba(30, 30, 50, 0.7); // Purple-tinted glass effect
+$card-bg-solid: #1e1e32; // Solid version for cards
+
+// Text colors
+$text-light: #f8fafc; // Bright white for headings
+$text-muted: #cbd5e1; // Light gray for body text
+$text-dark: #94a3b8; // Darker gray for secondary text
+
+// Glass morphism effects
+$glass-bg: rgba(124, 58, 237, 0.08); // Light purple glass
+$glass-border: rgba(168, 85, 247, 0.15); // Purple border glow
+$glass-shadow: 0 8px 32px rgba(124, 58, 237, 0.1); // Purple shadow
+
+// Gradient variations
+$gradient-primary: linear-gradient(135deg, $primary-color, $secondary-color);
+$gradient-accent: linear-gradient(135deg, $secondary-color, $accent-color);
+$gradient-dark: linear-gradient(
+  135deg,
+  rgba(15, 15, 26, 0.9),
+  rgba(30, 30, 50, 0.9)
+);
+
+// Effects
+$blur-intensity: 12px; // Increased blur for more glass effect
+$transition-fast: 0.2s ease;
+$transition-medium: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$laptop: 1024px;
+$desktop: 1200px;
+
+// Additional UI colors
+$success-color: #10b981;
+$warning-color: #f59e0b;
+$error-color: #ef4444;
+$info-color: #3b82f6;

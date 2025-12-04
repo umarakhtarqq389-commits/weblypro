@@ -1,4 +1,180 @@
-html {
-    scroll-behavior: smooth;
+// App.scss
+@import "./style/main.scss";
+@import "./style/responsive.scss";
+
+// Add to your main.scss or create _animations.scss
+/* ============================================
+   GLOBAL ANIMATIONS
+============================================ */
+
+// Animation classes for scroll
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &.animated {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+// Hover animations
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(67, 145, 246, 0.2);
+  }
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// Fade animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+// Slide animations
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease forwards;
+}
+
+// Rotate animations
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+.rotate-in {
+  animation: rotateIn 0.7s ease forwards;
+}
+
+// Bounce animation
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.bounce-in {
+  animation: bounceIn 0.8s ease forwards;
+}
+
+// Add automatic animation classes to elements
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card,
+.service-card,
+.portfolio-card,
+.team-member,
+.testimonial-card {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(67, 145, 246, 0.15);
+  }
+}
+
+// Gradient text animation
+.gradient-text {
+  background: linear-gradient(135deg, #4391f6, #9c3af6);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Button pulse animation
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(67, 145, 246, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(67, 145, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(67, 145, 246, 0);
+  }
+}
+
+.btn-primary.pulse {
+  animation: pulse 2s infinite;
+}
+
+// Add these classes automatically via JS or manually
+.auto-animate {
+  opacity: 0;
+
+  &.animated {
+    animation: fadeIn 0.6s ease forwards;
+  }
+}
