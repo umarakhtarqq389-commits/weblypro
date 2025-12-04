@@ -11,7 +11,7 @@ const Team = () => {
       image:
         "https://res.cloudinary.com/du3tkzdhe/image/upload/v1764842662/Gemini_Generated_Image_kojlt5kojlt5kojl_1_im0dc9.jpg", // Replace with actual image
       bio: "Lead strategist with expertise in business development and digital transformation",
-      linkedin: "#",
+      linkedin: "/",
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ const Team = () => {
       image:
         "https://res.cloudinary.com/du3tkzdhe/image/upload/v1764843037/Gemini_Generated_Image_4nu88m4nu88m4nu8_2_kymoyt.jpg", // Replace with actual image
       bio: "Technical visionary specializing in scalable software architecture and innovation",
-      linkedin: "#",
+      linkedin: "/",
     },
   ];
 
