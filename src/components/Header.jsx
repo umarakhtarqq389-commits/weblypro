@@ -1,4 +1,4 @@
-// HeaderWithSidebar.jsx - Updated with React Router Links
+// HeaderWithSidebar.jsx - Updated with dropdown positioning fix
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -21,6 +21,7 @@ const HeaderWithSidebar = () => {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const dropdownRef = useRef(null);
   const dropdownBtnRef = useRef(null);
+  const dropdownContainerRef = useRef(null);
   const navigate = useNavigate();
 
   // Handle scroll effect
@@ -71,6 +72,51 @@ const HeaderWithSidebar = () => {
     };
   }, [sidebarOpen]);
 
+  // Auto-position dropdown to prevent cutoff
+  useEffect(() => {
+    const handleDropdownPosition = () => {
+      if (dropdownContainerRef.current && servicesOpen) {
+        const container = dropdownContainerRef.current;
+        const dropdown = container.querySelector(".dropdown-menu");
+        if (!dropdown) return;
+
+        const containerRect = container.getBoundingClientRect();
+        const dropdownRect = dropdown.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+
+        // Check if dropdown would overflow on the right
+        const wouldOverflowRight =
+          containerRect.left + dropdownRect.width > viewportWidth - 20;
+
+        // Check if dropdown would overflow on the left
+        const wouldOverflowLeft = containerRect.right - dropdownRect.width < 20;
+
+        if (wouldOverflowRight && !wouldOverflowLeft) {
+          // Position dropdown to the left of the button
+          dropdown.style.left = "auto";
+          dropdown.style.right = "0";
+        } else if (wouldOverflowLeft && !wouldOverflowRight) {
+          // Position dropdown to the right of the button
+          dropdown.style.left = "0";
+          dropdown.style.right = "auto";
+        } else {
+          // Default position (centered under button)
+          dropdown.style.left = "0";
+          dropdown.style.right = "auto";
+        }
+      }
+    };
+
+    if (servicesOpen) {
+      handleDropdownPosition();
+      window.addEventListener("resize", handleDropdownPosition);
+    }
+
+    return () => {
+      window.removeEventListener("resize", handleDropdownPosition);
+    };
+  }, [servicesOpen]);
+
   const menuItems = [
     { id: 1, label: "Home", link: "/" },
     {
@@ -117,6 +163,10 @@ const HeaderWithSidebar = () => {
     setMobileServicesOpen(!mobileServicesOpen);
   };
 
+  const handleServicesHover = (open) => {
+    setServicesOpen(open);
+  };
+
   return (
     <>
       {/* Combined Header Component */}
@@ -141,6 +191,8 @@ const HeaderWithSidebar = () => {
                     href="https://www.facebook.com/profile.php?id=61577731470061"
                     className="social-icon"
                     aria-label="Facebook"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <FaFacebookF />
                   </a>
@@ -148,6 +200,8 @@ const HeaderWithSidebar = () => {
                     href="https://www.linkedin.com/in/weblypro/"
                     className="social-icon"
                     aria-label="LinkedIn"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <FaLinkedinIn />
                   </a>
@@ -155,6 +209,8 @@ const HeaderWithSidebar = () => {
                     href="https://www.instagram.com/webly_pro1/"
                     className="social-icon"
                     aria-label="Instagram"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <FaInstagram />
                   </a>
@@ -162,6 +218,8 @@ const HeaderWithSidebar = () => {
                     href="https://www.tiktok.com/@weblypro?_r=1&_t=ZS-91wIGpgWl0B"
                     className="social-icon"
                     aria-label="TikTok"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <FaTiktok />
                   </a>
@@ -192,12 +250,16 @@ const HeaderWithSidebar = () => {
                   {menuItems.map((item) => (
                     <li key={item.id} className="nav-item">
                       {item.dropdown ? (
-                        <div className="dropdown-container">
+                        <div
+                          className="dropdown-container"
+                          ref={dropdownContainerRef}
+                          onMouseEnter={() => handleServicesHover(true)}
+                          onMouseLeave={() => handleServicesHover(false)}
+                        >
                           <button
                             ref={dropdownBtnRef}
                             className="nav-link dropdown-btn"
                             onClick={toggleServices}
-                            onMouseEnter={() => setServicesOpen(true)}
                           >
                             {item.label}
                             <FaChevronDown
@@ -212,7 +274,6 @@ const HeaderWithSidebar = () => {
                             className={`dropdown-menu ${
                               servicesOpen ? "open" : ""
                             }`}
-                            onMouseLeave={() => setServicesOpen(false)}
                           >
                             <div className="dropdown-content">
                               {item.dropdownItems.map((service, index) => (
@@ -222,7 +283,6 @@ const HeaderWithSidebar = () => {
                                   className="dropdown-item"
                                   onClick={() => {
                                     setServicesOpen(false);
-                                    // Close sidebar if open
                                     if (sidebarOpen) closeSidebar();
                                   }}
                                 >
@@ -256,7 +316,11 @@ const HeaderWithSidebar = () => {
               </Link>
 
               {/* Mobile Menu Toggle */}
-              <button className="hamburger" onClick={toggleSidebar}>
+              <button
+                className="hamburger"
+                onClick={toggleSidebar}
+                aria-label="Open menu"
+              >
                 <FaBars />
               </button>
             </div>
@@ -273,7 +337,11 @@ const HeaderWithSidebar = () => {
         <div className="sidebar-content">
           {/* Sidebar Header */}
           <div className="sidebar-header">
-            <button className="close-btn" onClick={closeSidebar}>
+            <button
+              className="close-btn"
+              onClick={closeSidebar}
+              aria-label="Close menu"
+            >
               <FaTimes />
             </button>
           </div>
@@ -334,6 +402,8 @@ const HeaderWithSidebar = () => {
                   href="https://www.facebook.com/profile.php?id=61577731470061"
                   className="social-icon"
                   aria-label="Facebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FaFacebookF />
                 </a>
@@ -341,6 +411,8 @@ const HeaderWithSidebar = () => {
                   href="https://www.linkedin.com/in/weblypro/"
                   className="social-icon"
                   aria-label="LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FaLinkedinIn />
                 </a>
@@ -348,6 +420,8 @@ const HeaderWithSidebar = () => {
                   href="https://www.instagram.com/webly_pro1/"
                   className="social-icon"
                   aria-label="Instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FaInstagram />
                 </a>
@@ -355,6 +429,8 @@ const HeaderWithSidebar = () => {
                   href="https://www.tiktok.com/@weblypro?_r=1&_t=ZS-91wIGpgWl0B"
                   className="social-icon"
                   aria-label="TikTok"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FaTiktok />
                 </a>

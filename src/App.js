@@ -18,7 +18,7 @@ import ContactPage from "./components/ContactPage";
 import PageTransition from "./components/PageTransition";
 import BackToTop from "./components/BackToTop";
 import AutoScrollToTop from "./components/AutoScrollToTop";
-import GlobalAnimationWrapper from "./components/GlobalAnimationWrapper"; // ADD THIS
+import AutoAnimate from "./components/AutoAnimate"; // ADD THIS
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -49,58 +49,56 @@ function App() {
       {loading && <Loader />}
       <Header />
 
-      {/* WRAP ALL ROUTES WITH GLOBAL ANIMATION WRAPPER */}
-      <GlobalAnimationWrapper>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <PageTransition>
-                <>
-                  <Hero />
-                  <Services />
-                  <Portfolio />
-                  <Team />
-                  <Testimonials />
-                  <TechSphere />
-                </>
-              </PageTransition>
-            }
-          />
-          <Route
-            path="/services"
-            element={
-              <PageTransition>
-                <ServicesPage />
-              </PageTransition>
-            }
-          />
-          <Route
-            path="/portfolio"
-            element={
-              <PageTransition>
-                <PortfolioPage />
-              </PageTransition>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <PageTransition>
-                <AboutPage />
-              </PageTransition>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <PageTransition>
-                <ContactPage />
-              </PageTransition>
-            }
-          />
-        </Routes>
-      </GlobalAnimationWrapper>
+      <AutoAnimate />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <PageTransition>
+              <>
+                <Hero />
+                <Services />
+                <Portfolio />
+                <Team />
+                <Testimonials />
+                <TechSphere />
+              </>
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/services"
+          element={
+            <PageTransition>
+              <ServicesPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/portfolio"
+          element={
+            <PageTransition>
+              <PortfolioPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <PageTransition>
+              <AboutPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <PageTransition>
+              <ContactPage />
+            </PageTransition>
+          }
+        />
+      </Routes>
 
       <Footer />
       <BackToTop />

@@ -18,6 +18,7 @@
 @import "pageTransition";
 @import "backtotop";
 @import "scrolltotop";
+@import "contactPage";
 html,
 body {
   max-width: 100%;
@@ -348,4 +349,99 @@ html {
   :target {
     scroll-margin-top: 80px;
   }
+}
+/* Simple animations */
+section {
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Add delay for each section */
+.hero-section {
+  animation-delay: 0.2s;
+}
+
+.services-section {
+  animation-delay: 0.4s;
+}
+
+.portfolio-section {
+  animation-delay: 0.6s;
+}
+
+.team-section {
+  animation-delay: 0.8s;
+}
+
+.testimonials-section {
+  animation-delay: 1s;
+}
+
+.techsphere-section {
+  animation-delay: 1.2s;
+}
+
+//animation
+
+/* ============================================
+   SIMPLE ANIMATIONS FOR ALL PAGES
+============================================ */
+
+/* Page Load Animation */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Section Animation */
+.section-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.section-animate.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card Animation */
+.card-animate {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.4s ease;
+}
+
+.card-animate.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger Animation Delay */
+.delay-1 {
+  transition-delay: 0.1s !important;
+}
+.delay-2 {
+  transition-delay: 0.2s !important;
+}
+.delay-3 {
+  transition-delay: 0.3s !important;
+}
+.delay-4 {
+  transition-delay: 0.4s !important;
+}
+.delay-5 {
+  transition-delay: 0.5s !important;
 }
