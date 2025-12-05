@@ -62,7 +62,7 @@ const HomePortfolio = () => {
       image:
         "https://res.cloudinary.com/du3tkzdhe/image/upload/v1764860161/Screenshot_2025-12-04_at_7.55.51_PM_osnnnq.png",
       technologies: [<SiReact />, <SiNodedotjs />],
-      liveLink: "http://musaaltravelandtours.com/",
+      liveLink: "https://www.musaalrazatravelandtours.com/",
       githubLink: "/",
       color: "#3aa99e",
       stats: { perf: "+55%", conv: "+38%", speed: "1.3s" },

@@ -54,7 +54,7 @@ const PortfolioPage = () => {
       tech: ["React", "MongoDB", "Node.js"],
       year: "2025",
       client: "Musa Al Raza Travel",
-      liveLink: "http://musaaltravelandtours.com/",
+      liveLink: "https://www.musaalrazatravelandtours.com/",
       githubLink: "/",
     },
     {
