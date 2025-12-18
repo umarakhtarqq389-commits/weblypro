@@ -144,7 +144,7 @@ const PortfolioPage = () => {
   ];
 
   const filters = [
-    { id: "all", label: "All Projects" },
+    { id: "all", label: "Recent Projects" },
     { id: "web", label: "Web Development" },
     { id: "ecommerce", label: "E-commerce" },
     { id: "education", label: "Education" },
@@ -188,11 +188,11 @@ const PortfolioPage = () => {
             </p>
             <div className="hero-stats">
               <div className="stat">
-                <span className="stat-number">{projects.length}</span>
-                <span className="stat-label">Projects</span>
+                <span className="stat-number">99+</span>
+                <span className="stat-label">Projects Done</span>
               </div>
               <div className="stat">
-                <span className="stat-number">20+</span>
+                <span className="stat-number">200+</span>
                 <span className="stat-label">Live Projects</span>
               </div>
               <div className="stat">
