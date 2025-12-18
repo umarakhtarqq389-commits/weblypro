@@ -266,7 +266,7 @@ const Testimonials = () => {
             <div className="stat-item">
               <div className="stat-number">
                 {countersStarted && (
-                  <CountUp start={0} end={50} duration={3} suffix="+" />
+                  <CountUp start={0} end={100} duration={3} suffix="+" />
                 )}
               </div>
               <p className="stat-label">Projects Completed</p>
@@ -274,7 +274,7 @@ const Testimonials = () => {
             <div className="stat-item">
               <div className="stat-number">
                 {countersStarted && (
-                  <CountUp start={0} end={4.9} duration={3} decimals={1} />
+                  <CountUp start={0} end={4.5} duration={3} decimals={1} />
                 )}
                 <span className="stat-slash">/5</span>
               </div>

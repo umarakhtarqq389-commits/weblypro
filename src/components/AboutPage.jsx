@@ -15,8 +15,8 @@ const AboutPage = () => {
   const logosRef = useRef(null);
 
   const stats = [
-    { icon: <FaUsers />, value: "30+", label: "Happy Clients" },
-    { icon: <FaProjectDiagram />, value: "50+", label: "Projects Completed" },
+    { icon: <FaUsers />, value: "100+", label: "Happy Clients" },
+    { icon: <FaProjectDiagram />, value: "100+", label: "Projects Completed" },
     { icon: <FaAward />, value: "100%", label: "Client Satisfaction" },
     { icon: <FaHandshake />, value: "5+", label: "Years Experience" },
   ];
