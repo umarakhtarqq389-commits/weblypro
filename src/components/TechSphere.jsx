@@ -244,7 +244,7 @@ const ProjectShowcaseCompact = () => {
                     <span className="project-category-mobile">
                       {project.category}
                     </span>
-                    <a href="#" className="action-link-mobile">
+                    <a href="/" className="action-link-mobile">
                       <FaExternalLinkAlt />
                     </a>
                   </div>

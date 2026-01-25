@@ -1,12 +1,6 @@
 // components/PortfolioPage.jsx
 import React, { useState, useEffect } from "react";
-import {
-  FaExternalLinkAlt,
-  FaGithub,
-  FaArrowUp,
-  FaFilter,
-  FaGlobe,
-} from "react-icons/fa";
+import { FaGithub, FaArrowUp, FaFilter, FaGlobe } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const PortfolioPage = () => {
