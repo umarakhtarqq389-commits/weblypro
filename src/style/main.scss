@@ -1,0 +1,447 @@
+// style/main.scss - UPDATED
+@import "variables";
+
+@import "header";
+
+@import "hero";
+@import "services";
+@import "portfolio";
+@import "portfolioPage";
+@import "Team";
+@import "footer";
+@import "responsive";
+@import "testimonials";
+@import "techSphere";
+@import "servicePage";
+@import "aboutPage";
+@import "loader";
+@import "pageTransition";
+@import "backtotop";
+@import "scrolltotop";
+@import "contactPage";
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+}
+
+body {
+  background-color: $dark-bg;
+  color: $text-muted;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 3.5rem;
+  position: relative;
+  color: $text-light;
+  letter-spacing: -0.5px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: $gradient-primary;
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgba($primary-color, 0.4);
+  }
+}
+
+.purple-gradient {
+  background: $gradient-primary;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all $transition-medium;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $gradient-primary;
+    z-index: -1;
+    transition: opacity $transition-medium;
+  }
+
+  &-primary {
+    background: $gradient-primary;
+    color: white;
+    box-shadow: 0 4px 20px rgba($primary-color, 0.3);
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba($primary-color, 0.4);
+    }
+
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+
+  &-outline {
+    background: transparent;
+    border: 2px solid $glass-border;
+    color: $text-light;
+    backdrop-filter: blur($blur-intensity);
+
+    &:hover {
+      background: rgba($primary-color, 0.1);
+      border-color: $primary-color;
+      box-shadow: 0 0 20px rgba($primary-color, 0.2);
+    }
+  }
+
+  &-glass {
+    background: $glass-bg;
+    backdrop-filter: blur($blur-intensity);
+    border: 1px solid $glass-border;
+    color: $text-light;
+
+    &:hover {
+      background: rgba($primary-color, 0.15);
+      transform: translateY(-2px);
+      box-shadow: $glass-shadow;
+    }
+  }
+}
+
+// Enhanced animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $dark-bg;
+}
+
+// ::-webkit-scrollbar-thumb {
+//   background: linear-gradient(to bottom, $primary-color, $secondary-color);
+//   border-radius: 5px;
+// }
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, $secondary-color, $accent-color);
+}
+
+// Selection color
+::selection {
+  background: rgba($primary-color, 0.3);
+  color: white;
+}
+
+// Background patterns
+.bg-pattern {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+        circle at 20% 80%,
+        rgba($primary-color, 0.05) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba($secondary-color, 0.05) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 40%,
+        rgba($accent-color, 0.03) 0%,
+        transparent 50%
+      );
+    z-index: -1;
+  }
+}
+
+// Glass card base class
+.glass-card {
+  background: $card-bg;
+  backdrop-filter: blur($blur-intensity);
+  border: 1px solid $glass-border;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all $transition-medium;
+
+  &:hover {
+    border-color: rgba($primary-color, 0.3);
+    box-shadow: 0 12px 40px rgba($primary-color, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+  }
+}
+
+/* === GLOBAL HEADER SPACING FIX === */
+/* This fixes ALL pages going behind the fixed header */
+
+/* For pages with .page classes */
+.page,
+.services-page,
+.portfolio-page,
+.about-page,
+.contact-page {
+  padding-top: -100px !important;
+  min-height: 100vh;
+}
+
+/* For sections that have hero sections */
+.services-hero,
+.portfolio-hero,
+.about-hero,
+.contact-hero {
+  position: relative;
+  padding-top: 70px !important;
+}
+
+/* For pages without hero sections */
+.page-content {
+  padding-top: var(--header-combined-height);
+}
+
+/* Make sure all pages scroll properly */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-combined-height, 120px);
+}
+
+/* Fix for anchor links */
+:target {
+  scroll-margin-top: var(--header-combined-height, 120px);
+}
+
+/* Specific fix for PortfolioPage */
+.portfolio-page {
+  background: #0a0a14;
+  color: var(--text-light);
+  position: relative;
+}
+
+/* Ensure content doesn't go under header */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fix Header Spacing Gap on Mobile */
+@media (max-width: 768px) {
+  .page,
+  .services-page,
+  .portfolio-page,
+  .about-page,
+  .contact-page {
+    padding-top: 80px !important; /* Reduced padding for mobile */
+  }
+
+  .services-hero,
+  .portfolio-hero,
+  .about-hero,
+  .contact-hero {
+    margin-top: -80px !important;
+    padding-top: 100px !important; /* Reduced padding for mobile */
+  }
+
+  .page-content {
+    padding-top: 80px;
+  }
+
+  html {
+    scroll-padding-top: 80px;
+  }
+
+  :target {
+    scroll-margin-top: 80px;
+  }
+}
+/* Simple animations */
+section {
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Add delay for each section */
+.hero-section {
+  animation-delay: 0.2s;
+}
+
+.services-section {
+  animation-delay: 0.4s;
+}
+
+.portfolio-section {
+  animation-delay: 0.6s;
+}
+
+.team-section {
+  animation-delay: 0.8s;
+}
+
+.testimonials-section {
+  animation-delay: 1s;
+}
+
+.techsphere-section {
+  animation-delay: 1.2s;
+}
+
+//animation
+
+/* ============================================
+   SIMPLE ANIMATIONS FOR ALL PAGES
+============================================ */
+
+/* Page Load Animation */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Section Animation */
+.section-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.section-animate.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card Animation */
+.card-animate {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.4s ease;
+}
+
+.card-animate.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger Animation Delay */
+.delay-1 {
+  transition-delay: 0.1s !important;
+}
+.delay-2 {
+  transition-delay: 0.2s !important;
+}
+.delay-3 {
+  transition-delay: 0.3s !important;
+}
+.delay-4 {
+  transition-delay: 0.4s !important;
+}
+.delay-5 {
+  transition-delay: 0.5s !important;
+}

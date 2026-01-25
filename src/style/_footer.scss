@@ -1,0 +1,379 @@
+// components/Footer.scss
+.footer {
+  background: linear-gradient(180deg, #0a0a14 0%, #0e0e1a 100%);
+  padding: 60px 0 20px;
+  border-top: 1px solid rgba(67, 145, 246, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(67, 145, 246, 0.3),
+      transparent
+    );
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(115, 98, 236, 0.3),
+      transparent
+    );
+  }
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+
+  /* Tablet - 2 columns */
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  /* Mobile - 1 column */
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    text-align: center;
+  }
+}
+
+.footer-section {
+  .footer-logo {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: white;
+
+    .purple-gradient {
+      background: linear-gradient(135deg, #7b68ee, #4391f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  .footer-description {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+  }
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  @media (max-width: 576px) {
+    justify-content: center;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    &:hover {
+      background: linear-gradient(135deg, #4391f6, #7b68ee);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(67, 145, 246, 0.3);
+    }
+
+    svg {
+      font-size: 16px;
+    }
+  }
+}
+
+.footer-heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: white;
+  position: relative;
+  padding-bottom: 10px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #4391f6, #7b68ee);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 576px) {
+    text-align: center;
+
+    &::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 2px 0;
+
+    &:hover {
+      color: #4391f6;
+      transform: translateX(5px);
+    }
+  }
+
+  @media (max-width: 576px) {
+    a:hover {
+      transform: translateX(0);
+    }
+  }
+}
+
+.footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-icon {
+      color: #4391f6;
+      font-size: 18px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .contact-text {
+      display: flex;
+      flex-direction: column;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      line-height: 1.5;
+
+      span {
+        display: block;
+        line-height: 1.4;
+      }
+    }
+
+    .contact-link {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      flex: 1;
+
+      &:hover {
+        color: #4391f6;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    li {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+
+      .contact-icon {
+        margin-top: 0;
+      }
+
+      .contact-text {
+        align-items: center;
+      }
+    }
+  }
+}
+
+.footer-bottom {
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 20px;
+
+  .footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+  }
+
+  .footer-legal {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+
+    @media (max-width: 480px) {
+      justify-content: center;
+      gap: 10px;
+    }
+
+    a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: #4391f6;
+      }
+    }
+
+    .divider {
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 0.85rem;
+    }
+  }
+}
+
+// Responsive adjustments for extra small screens
+@media (max-width: 380px) {
+  .footer {
+    padding: 50px 15px 20px;
+  }
+
+  .footer-content {
+    gap: 30px;
+  }
+
+  .footer-section {
+    .footer-logo {
+      font-size: 1.8rem;
+    }
+
+    .footer-description {
+      font-size: 0.9rem;
+    }
+  }
+
+  .footer-social {
+    gap: 10px;
+
+    .social-link {
+      width: 38px;
+      height: 38px;
+    }
+  }
+
+  .footer-heading {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .footer-links {
+    a {
+      font-size: 0.9rem;
+    }
+  }
+
+  .footer-contact {
+    li {
+      .contact-text,
+      .contact-link {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// Animation for footer sections on mobile
+@media (max-width: 576px) {
+  .footer-section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+
+    &:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

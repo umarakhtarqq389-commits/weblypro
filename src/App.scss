@@ -1,0 +1,74 @@
+// App.scss
+@import "./style/main.scss";
+@import "./style/responsive.scss";
+
+// Add to your main.scss or create _animations.scss
+/* ============================================
+   GLOBAL ANIMATIONS
+============================================ */
+/* ============================================
+   SIMPLE ONE-TIME ANIMATIONS (Add to App.scss)
+============================================ */
+
+/* 1. Auto-Animate for all sections */
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 2. Auto-Animate for all cards */
+.card,
+.service-card,
+.portfolio-card,
+.team-member,
+.testimonial-card,
+.info-card,
+.form-wrapper {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card.animated,
+.service-card.animated,
+.portfolio-card.animated,
+.team-member.animated,
+.testimonial-card.animated,
+.info-card.animated,
+.form-wrapper.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. Simple hover animations */
+.btn,
+button,
+a {
+  transition: all 0.3s ease;
+}
+
+.btn:hover,
+button:hover,
+a:hover {
+  transform: translateY(-2px);
+}
+
+/* 4. Page transition */
+.page-transition {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+//

@@ -1,0 +1,48 @@
+/* Back to top button - FIXED FOR MOBILE */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #4391f6, #7b68ee);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 9998; /* Lower than header but above content */
+  box-shadow: 0 5px 20px rgba(67, 145, 246, 0.3);
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(67, 145, 246, 0.4);
+  }
+
+  /* Mobile positioning */
+  @media (max-width: 768px) {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  /* Small mobile - position above footer */
+  @media (max-width: 576px) {
+    bottom: 80px; /* Position above footer on mobile */
+    right: 20px;
+  }
+}
