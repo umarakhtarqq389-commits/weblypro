@@ -104,7 +104,7 @@ const AboutPage = () => {
       setCurrentLogo((prev) => (prev + 1) % clientLogos.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [clientLogos.length]); // add dependency
 
   return (
     <div className="about-page">

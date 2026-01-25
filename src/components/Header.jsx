@@ -1,6 +1,6 @@
 // HeaderWithSidebar.jsx - Updated with dropdown positioning fix
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   FaChevronDown,
   FaBars,
@@ -22,7 +22,7 @@ const HeaderWithSidebar = () => {
   const dropdownRef = useRef(null);
   const dropdownBtnRef = useRef(null);
   const dropdownContainerRef = useRef(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Handle scroll effect
   useEffect(() => {

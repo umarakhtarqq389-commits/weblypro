@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   FaExternalLinkAlt,
   FaChevronLeft,
@@ -66,14 +66,13 @@ const ProjectShowcaseCompact = () => {
     },
   ];
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % projects.length);
-  };
+  }, [projects.length]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
+  }, [projects.length]);
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -84,7 +83,7 @@ const ProjectShowcaseCompact = () => {
 
     const interval = setInterval(() => {
       if (!isMobile) {
-        nextSlide();
+        nextSlide(); // ✅ nextSlide is stable via useCallback
       }
     }, 4000);
 
@@ -92,7 +91,7 @@ const ProjectShowcaseCompact = () => {
       window.removeEventListener("resize", checkMobile);
       clearInterval(interval);
     };
-  }, [activeIndex, isMobile]);
+  }, [isMobile, nextSlide]); // ✅ use nextSlide, not activeIndex
 
   useEffect(() => {
     if (isMobile && containerRef.current) {

@@ -1,5 +1,5 @@
 // components/HomePortfolio.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   FaExternalLinkAlt,
   FaGithub,
@@ -152,14 +152,13 @@ const HomePortfolio = () => {
       stats: { perf: "+0%", conv: "+0%", speed: "0.0s" },
     },
   ];
-
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % projects.length);
-  };
+  }, [projects.length]); // ✅ depends on projects.length
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
+  }, [projects.length]);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -171,7 +170,7 @@ const HomePortfolio = () => {
 
     const interval = setInterval(() => {
       if (!isMobile) {
-        nextSlide();
+        nextSlide(); // ✅ use nextSlide, must add to deps
       }
     }, 4000);
 
@@ -179,7 +178,7 @@ const HomePortfolio = () => {
       window.removeEventListener("resize", checkMobile);
       clearInterval(interval);
     };
-  }, [activeIndex, isMobile]);
+  }, [isMobile, nextSlide]); // ✅ fixed dependencies
 
   return (
     <section className="home-portfolio-section" id="portfolio">
