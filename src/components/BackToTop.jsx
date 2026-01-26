@@ -26,17 +26,14 @@ const BackToTop = () => {
   }, []);
 
   return (
-    <a
-      href="#top"
+    <button
+      type="button"
       className={`back-to-top ${isVisible ? "visible" : ""}`}
-      onClick={(e) => {
-        e.preventDefault();
-        scrollToTop();
-      }}
+      onClick={scrollToTop}
       aria-label="Back to top"
     >
       <FaArrowUp />
-    </a>
+    </button>
   );
 };
 

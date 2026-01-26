@@ -35,7 +35,7 @@ const PortfolioPage = () => {
       year: "2022",
       client: "Janan",
       liveLink: "https://janan.com/",
-      githubLink: "#",
+      githubLink: "/",
     },
     {
       id: 3,

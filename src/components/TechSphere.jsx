@@ -145,7 +145,7 @@ const ProjectShowcaseCompact = () => {
                       <span className="project-category-compact">
                         {project.category}
                       </span>
-                      <a href="#" className="action-link-compact">
+                      <a href="/" className="action-link-compact">
                         <FaExternalLinkAlt />
                       </a>
                     </div>

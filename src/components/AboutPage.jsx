@@ -80,7 +80,7 @@ const AboutPage = () => {
         "Digital Transformation",
         "Client Relations",
       ],
-      linkedin: "#",
+      linkedin: "/",
     },
     {
       id: 2,
@@ -94,7 +94,7 @@ const AboutPage = () => {
         "Full-Stack Development",
         "Technical Leadership",
       ],
-      linkedin: "#",
+      linkedin: "/",
     },
   ];
 
